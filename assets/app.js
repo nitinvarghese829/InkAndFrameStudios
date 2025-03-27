@@ -7,6 +7,11 @@ import "./bootstrap.js";
  */
 import "./styles/app.scss";
 
-const bootstrap = require("bootstrap");
+const $ = require("jquery");
 
-console.log("This log comes from assets/app.js - welcome to AssetMapper! 🎉");
+require("bootstrap");
+import "bootstrap";
+
+$(function () {
+  console.log("using jquery!");
+});
