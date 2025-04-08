@@ -1,20 +1,194 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Home | Ink & Frame Studios
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<section class="hero-section">
+		<header class="container py-5">
+			<h1 class="font-24 text-white" data-aos="fade-in">{{'Welcome to Ink & Frame Studios — where stories come alive, from bold scripts to unforgettable visuals.' | upper}}</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/pixcity/Documents/repo2/InkAndFrameStudios/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>/home/pixcity/Documents/repo2/InkAndFrameStudios/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
+			<div class="row g-3 py-3">
+				<div class="col-lg-8 col-md-6 col-sm-12" data-aos="fade-in">
+
+					<img src="{{asset('images/hero-1.webp')}}" alt="" class="img-fluid rounded-2 shadow w-100 h-100 object-fit-cover">
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-12" data-aos="fade-in">
+
+					<img src="{{asset('images/hero-2.webp')}}" alt="" class="img-fluid rounded-2 shadow w-100 h-100 object-fit-cover">
+				</div>
+
+			</div>
+
+			<div class="d-block d-md-flex gap-2 align-items-center">
+				<p class="font-12 text-white m-0" data-aos="fade-in">We are a story-first production house based in Maharashtra, blending craft with clarity. Whether it's a powerful script, a striking brand film, or an indie gem — we're here to make sure no story is left untold.</p>
+
+				<a href="#contact-us" class="btn btn-primary w-220 text-secondary fw-bold" data-aos="fade-in">Get in Touch</a>
+			</div>
+
+
+		</header>
+	</section>
+
+	<section class="our-story-section">
+		<div class=" py-5">
+			<div class="container">
+				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'The Ink & Frame Experience' | upper }}</h1>
+
+
+				<p class="text-white text-center m-0 py-3 font-16" data-aos="fade-in">We blend storytelling, cinematic artistry, and passion to create compelling visuals that leave a lasting impact. Every frame, every word, and every detail is crafted with creativity and precision.</p>
+
+
+			</div>
+
+			<div class="container">
+
+				<div class="row py-3 g-2">
+					<div class="col-lg-6 col-md-12">
+						<div class="row g-2 h-100" data-aos="fade-in">
+
+							<div class="col-6">
+								<img src="{{asset('images/our-story.webp')}}" alt="" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
+
+							</div>
+							<div class="col-6">
+								<img src="{{asset('images/cinema-claps.webp')}}" alt="" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
+
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-12 my-auto">
+						<div>
+							<div class="d-flex position-relative" data-aos="fade-in">
+
+								<p class="font-24 fw-bold text-muted m-0">01</p>
+								<p class="text-white m-0 position-absolute title">{{'Storytelling' | upper }}</p>
+
+							</div>
+							<p class="text-white font-12" data-aos="fade-in">We weave powerful narratives that leave a lasting impact, turning ideas into unforgettable experiences</p>
+
+
+						</div>
+
+						<div>
+							<div class="d-flex position-relative" data-aos="fade-in">
+								<p class="font-24 fw-bold text-muted m-0">02</p>
+								<p class="text-white m-0 position-absolute title">{{'Cinematic Craftsmanship' | upper }}</p>
+
+							</div>
+							<p class="text-white font-12" data-aos="fade-in">With a keen eye for detail, we create visually stunning frames that enhance every story, blending art with precision.</p>
+
+						</div>
+
+
+						<div>
+							<div class="d-flex position-relative" data-aos="fade-in">
+								<p class="font-24 fw-bold text-muted m-0">03</p>
+								<p class="text-white m-0 position-absolute title">{{'Passion' | upper }}</p>
+
+							</div>
+							<p class="text-white font-12" data-aos="fade-in">Our love for storytelling and filmmaking drives us to push creative boundaries, delivering work that resonates with emotion and authenticity.</p>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</section>
+
+	<section class="our-services-section">
+		<div class="bg-secondary py-5">
+			<div class="container">
+				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Services' | upper }}</h1>
+
+
+				{# <div class="row g-3"> #}
+				<div class="">
+					<p class="text-white text-center m-0 font-16" data-aos="fade-in">Let's discover services We Offer.</p>
+
+				</div>
+
+
+				{# </div> #}
+
+				<div class="container py-3">
+					<div class="row g-3">
+						<div class="col-lg-4 col-md-4 col-sm-12" data-aos="fade-in">
+							<div class="image-container position-relative text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-feather text-primary" viewbox="0 0 16 16">
+									<path d="M15.807.531c-.174-.177-.41-.289-.64-.363a3.8 3.8 0 0 0-.833-.15c-.62-.049-1.394 0-2.252.175C10.365.545 8.264 1.415 6.315 3.1S3.147 6.824 2.557 8.523c-.294.847-.44 1.634-.429 2.268.005.316.05.62.154.88q.025.061.056.122A68 68 0 0 0 .08 15.198a.53.53 0 0 0 .157.72.504.504 0 0 0 .705-.16 68 68 0 0 1 2.158-3.26c.285.141.616.195.958.182.513-.02 1.098-.188 1.723-.49 1.25-.605 2.744-1.787 4.303-3.642l1.518-1.55a.53.53 0 0 0 0-.739l-.729-.744 1.311.209a.5.5 0 0 0 .443-.15l.663-.684c.663-.68 1.292-1.325 1.763-1.892.314-.378.585-.752.754-1.107.163-.345.278-.773.112-1.188a.5.5 0 0 0-.112-.172M3.733 11.62C5.385 9.374 7.24 7.215 9.309 5.394l1.21 1.234-1.171 1.196-.027.03c-1.5 1.789-2.891 2.867-3.977 3.393-.544.263-.99.378-1.324.39a1.3 1.3 0 0 1-.287-.018Zm6.769-7.22c1.31-1.028 2.7-1.914 4.172-2.6a7 7 0 0 1-.4.523c-.442.533-1.028 1.134-1.681 1.804l-.51.524zm3.346-3.357C9.594 3.147 6.045 6.8 3.149 10.678c.007-.464.121-1.086.37-1.806.533-1.535 1.65-3.415 3.455-4.976 1.807-1.561 3.746-2.36 5.31-2.68a8 8 0 0 1 1.564-.173"/>
+								</svg>
+								<p class="fw-bold text-primary mt-2">{{ 'Script Writing' | upper }}</p>
+
+								<p class="text-white small">Original stories, commissioned scripts, screenplays</p>
+
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-12" data-aos="fade-in">
+							<div class="image-container position-relative text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-camera-reels text-primary" viewbox="0 0 16 16">
+									<path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0M1 3a2 2 0 1 0 4 0 2 2 0 0 0-4 0"/>
+									<path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm6 8.73V7.27l-3.5 1.555v4.35zM1 8v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+									<path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+								</svg>
+
+								<p class="fw-bold text-primary mt-2">{{ 'Film & Ad Production' | upper }}</p>
+								<p class="text-white small">Brand films, campaigns, concept-to-screen execution</p>
+
+							</div>
+						</div>
+
+						<div class="col-lg-4 col-md-4 col-sm-12" data-aos="fade-in">
+							<div class="image-container position-relative text-center">
+								<i class="fas fa-lightbulb fa-2x text-primary shadow-lg"></i>
+								<p class="fw-bold text-primary mt-2">{{ 'Creative Development' | upper }}</p>
+								<p class="text-white small">Pitch creation, story ideation, collaborations</p>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="d-flex justify-content-center align-items-center">
+						<a href="{{ path('app_our_services') }}" class="btn btn-primary w-220 text-secondary fw-bold aos-init aos-animate">View All</a>
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<section class="featured-projects-section">
+		<div class="bg-black py-5">
+			<div class="container">
+				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Featured Projects' | upper }}</h1>
+				<p class="text-white text-center font-16 m-0" data-aos="fade-in">Discover our standout projects that showcase our passion for storytelling, cinematic craftsmanship, and creative excellence. Each project is a testament to our dedication to bringing ideas to life with stunning visuals and compelling narratives.</p>
+			</div>
+
+			<div class="container pt-5">
+				<div class="row g-2">
+					<div class="col-lg-8 col-md-8 col-sm-12" data-aos="fade-in">
+						<iframe class="w-100 rounded-3" height='400' src="https://www.youtube.com/embed/LhAQEjbZBdw?si=Bo7C79rkHdATA9o_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+					<div class="col-lg-4 col-md-8 col-sm-12">
+						<img src="{{asset('images/coming-soon.jpg')}}" alt="" class="img-fluid h-100 object-fit-cover shadow" data-aos="fade-in">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	{{ include('home/contact.html.twig') }}
+
 {% endblock %}

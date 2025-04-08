@@ -2,6 +2,109 @@
 @import "_buttons.scss";
 @import "_helpers.scss";
 @import "~bootstrap/scss/bootstrap";
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Outfit:wght@100..900&display=swap");
 body {
-  background-color: skyblue;
+  background-color: $secondary;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "EB Garamond", serif;
+}
+
+p {
+  font-family: "Outfit", sans-serif;
+}
+.filter-white {
+  filter: invert(1);
+}
+
+.font-12 {
+  font-size: 12px !important;
+}
+
+.font-24 {
+  font-size: calc(24px + 1vw);
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.w-220 {
+  min-width: 220px;
+}
+
+.our-story-section {
+  background-image: url("../images/service-bg-1.webp");
+  background-size: cover; /* Ensures it covers the entire section */
+  background-position: center; /* Centers the image */
+  background-color: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+  background-blend-mode: color; /* Blends image with the background color */
+  .title {
+    bottom: 8px;
+    left: 25px;
+  }
+}
+
+.header-about-us {
+  background-image: url("../images/about-us-bg.webp");
+  background-size: cover; /* Ensures it covers the entire section */
+  background-position: center; /* Centers the image */
+  height: 35vh;
+}
+
+.header-services {
+  background-image: url("../images/services.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 35vh;
+}
+@media (min-width: 1024px) {
+  .header-services,
+  .header-about-us {
+    height: 45vh;
+  }
+}
+
+.same-width {
+  width: 50px;
+  height: 50px;
+}
+
+.team {
+  .name {
+    line-height: 35px;
+  }
+}
+
+.service-card {
+  background-color: #1e1e1e;
+  transition: all 0.3s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 10px rgba(244, 162, 97, 0.3);
+}
+
+.service-card ul {
+  padding-left: 18px;
+}
+
+.service-card ul li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 }

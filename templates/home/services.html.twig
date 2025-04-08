@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About Us | Ink & Frame Studios
+{% endblock %}
+
+{% block body %}
+	<section class="header-services">
+		<div class="d-flex justify-content-center align-items-center h-100">
+			<h1 class="text-primary py-5" data-aoss="fade-in">OUR SERVICES</h1>
+		</div>
+	</section>
+
+	<section class="">
+		<div class="bg-black py-5">
+			<div class="container">
+				<div class="text-center">
+					<h1 class="text-primary" data-aoss="fade-in">What we offer</h1>
+
+					<p class="text-white m-0 font-16" data-aoss="fade-in">From Concept to Creation Transforming Ideas into Art</p>
+				</div>
+
+
+			</div>
+		</div>
+	</section>
+
+	<section class="bg-black">
+		<div class="container">
+			<div class="row justify-content-center">
+				{% for serviceName, service in services %}
+					<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+						<div class="service-card rounded-2 p-4 h-100">
+							<div class="text-center">
+								<i class="{{ service.icon }} fa-2x text-primary mb-2"></i>
+							</div>
+							<p class="text-center text-primary fw-bold mb-2">{{ service.title }}</p>
+							<ul>
+								{% for point in service.points %}
+									<li class="text-white">{{ point }}</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+
+				{% endfor %}
+
+
+			</div>
+
+		</div>
+
+
+	</section>
+
+	{{ include('home/contact.html.twig') }}
+
+{% endblock %}

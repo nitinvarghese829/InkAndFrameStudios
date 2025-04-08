@@ -1,9 +1,9 @@
-$primary:       #31B997 !default;
-$secondary:     #EE628F !default;
+$primary: #f2a444 !default; // Warm Gold
+$secondary: #1b1a17 !default; // Dark Charcoal Black
 
 $theme-colors: (
-        "primary":    $primary,
-        "secondary":  $secondary,
+  "primary": $primary,
+  "secondary": $secondary,
 ) !default;
 
-$font-size-base: 0.75rem;
+$font-size-base: 1.2rem;

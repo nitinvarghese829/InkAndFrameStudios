@@ -14,4 +14,7 @@ import "bootstrap";
 
 $(function () {
   console.log("using jquery!");
+  AOS.init({
+    duration: 1800,
+  });
 });
