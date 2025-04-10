@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\ContactUs;
+use App\Form\ContactUsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -11,6 +13,15 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
+        // $email = (new Email())
+        //     ->from('hello@inkandframestudios.com')
+        //     ->to('nitinmac10@gmail.com') // or dynamically from settings
+        //     ->subject('New Contact Form Submission')
+        //     ->html($this->twig->render('home/contact_lead.html.twig', [
+        //         'contact' => $contact
+        //     ]));
+
+        // $this->mailer->send($email);
         $projects = [
             1 => [
                 'name' => 'Premalu',
