@@ -13,6 +13,12 @@ DirectoryIndex index.php
 
 # Disabling MultiViews prevents unwanted negotiation, e.g. "/index" should not resolve
 # to the front controller "/index.php" but be rewritten to "/index.php/index".
+
+<IfModule mod_headers.c>
+    Header unset X-Robots-Tag
+    Header always set X-Robots-Tag "index, follow"
+</IfModule>
+
 <IfModule mod_negotiation.c>
     Options -MultiViews
 </IfModule>
