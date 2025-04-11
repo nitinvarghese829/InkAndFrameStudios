@@ -81,13 +81,13 @@ class ContactFormSubscriber implements EventSubscriberInterface
                 'phoneNo' => $form->get('phoneNo')->getData(),
                 'message' => $form->get('message')->getData()
             ];
-            ApiService::post(
-                'https://hook.eu2.make.com/fix8alkjj4el8yg0secj9wh3s2xso90x',
-                json_encode($data),
-                [
-                    'Content-Type' => 'application/json'
-                ]
-            );
+            // ApiService::post(
+            //     'https://hook.eu2.make.com/fix8alkjj4el8yg0secj9wh3s2xso90x',
+            //     json_encode($data),
+            //     [
+            //         'Content-Type' => 'application/json'
+            //     ]
+            // );
             return;
         }
 

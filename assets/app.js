@@ -1,4 +1,4 @@
-import "./bootstrap.js";
+// import "./bootstrap.js";
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -10,7 +10,6 @@ import "./styles/app.scss";
 const $ = require("jquery");
 
 require("bootstrap");
-import "bootstrap";
 
 $(function () {
   console.log("using jquery!");

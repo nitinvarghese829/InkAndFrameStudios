@@ -2,16 +2,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta
-		name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<!-- Meta Description (For SEO) -->
-		<meta
-		name="description" content="Your website description here.">
 
-		<!-- Keywords (Not important for SEO anymore, but can be used) -->
+		<meta name="description" content="{% block meta_description %}Default meta description.{% endblock %}">
+		<meta name="keywords" content="{% block meta_keywords %}default, keywords{% endblock %}">
+
 		<meta
-		name="keywords" content="your, keywords, here">
+		name="robots" content="index, follow">
+
 
 		<!-- Author -->
 		<meta
@@ -50,9 +49,6 @@
 			{{ encore_entry_script_tags('app') }}
 			<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
 		{% endblock %}
 	</head>
 	<body>
