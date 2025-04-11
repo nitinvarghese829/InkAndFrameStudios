@@ -183,29 +183,43 @@
 				<p class="text-white text-center font-16 m-0" data-aos="fade-in">Discover standout projects of our co-founders that showcase our passion for storytelling, cinematic craftsmanship, and creative excellence. Each project is a testament to our dedication to bringing ideas to life with stunning visuals and compelling narratives.</p>
 			</div>
 
+
 			<div class="container pt-5">
-				<div id="carouselProjects" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<div class="row">
-								<div class="col-lg-8 col-md-8 col-sm-12">
-									<iframe class="w-100 rounded-3" height='500' src="https://www.youtube.com/embed/LhAQEjbZBdw?si=Bo7C79rkHdATA9o_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-								</div>
-								<div class="col-lg-4 col-md-4 col-sm-12">
-									<img src="{{asset('images/uvc.jpg')}}" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
-								</div>
+
+				<div class="row g-3">
+					<div class="col-lg-8 col-md-8 col-sm-12">
+						<div data-video-id="101FvfK3J0Q" class="youtube-thumbnail position-relative rounded-4 shadow h-100">
+							<div class="ratio ratio-16x9">
+								<img src="https://img.youtube.com/vi/101FvfK3J0Q/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
 							</div>
 
+							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
+								<img src={{asset('images/playbutton.png')}} alt="Play Button" width="60"/>
+							</button>
 						</div>
-						<div class="carousel-item">
-							<iframe class="w-100 rounded-3" height='500' src="https://www.youtube.com/embed/JvP2jaCmpgE?si=9CuvLXUA54WgDntG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-12 d-flex flex-column gap-3">
+						<div data-video-id="JvP2jaCmpgE" class="youtube-thumbnail position-relative rounded-4 shadow">
+							<div class="ratio ratio-16x9">
+								<img src="https://img.youtube.com/vi/JvP2jaCmpgE/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
+							</div>
+
+							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
+								<img src={{asset('images/playbutton.png')}} alt="Play Button" width="60"/>
+							</button>
 						</div>
-						<div class="carousel-item">
-							<iframe class="w-100 rounded-3" height='500' src="https://www.youtube.com/embed/101FvfK3J0Q?si=a9uudyXU5lZARNY3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+						<div data-video-id="LhAQEjbZBdw" class="youtube-thumbnail position-relative rounded-4 shadow">
+							<div class="ratio ratio-16x9">
+								<img src="https://img.youtube.com/vi/LhAQEjbZBdw/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
+							</div>
+
+							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
+								<img src={{asset('images/playbutton.png')}} alt="Play Button" width="60"/>
+							</button>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>

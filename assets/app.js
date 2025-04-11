@@ -16,4 +16,24 @@ $(function () {
   AOS.init({
     duration: 1800,
   });
+
+  document.querySelectorAll(".youtube-thumbnail").forEach(function (thumbnail) {
+    thumbnail.addEventListener("click", function () {
+      const videoId = thumbnail.getAttribute("data-video-id");
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("class", "h-100 w-100");
+      iframe.setAttribute(
+        "src",
+        `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0showinfo=0`
+      );
+      iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute(
+        "allow",
+        "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+      );
+      iframe.setAttribute("allowfullscreen", "true");
+      thumbnail.innerHTML = "";
+      thumbnail.appendChild(iframe);
+    });
+  });
 });
