@@ -112,3 +112,11 @@ p {
 .iframe-height {
   height: 500px;
 }
+
+.upcoming-projects {
+  .project {
+    img {
+      max-height: 600px;
+    }
+  }
+}
