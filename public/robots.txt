@@ -1,2 +1,5 @@
 User-agent: *
 Disallow: /admin/
+
+# Sitemap
+Sitemap: https://inkandframestudios.com/sitemap.xml

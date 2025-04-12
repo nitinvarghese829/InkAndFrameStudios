@@ -5,36 +5,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-		<meta name="description" content="{% block meta_description %}Default meta description.{% endblock %}">
+		<title>{{ meta_title|default('Default Site Title') }}</title>
+		<meta name="description" content="{{ meta_description|default('Default site description.') }}">
 		<meta
-		name="keywords" content="{% block meta_keywords %}default, keywords{% endblock %}">
+		name="keywords" content="{{ meta_keywords|default('default, keywords, here') }}">
 
+		<!-- Open Graph -->
+		<meta property="og:title" content="{{ meta_title|default('Default Site Title') }}">
+		<meta property="og:description" content="{{ meta_description|default('Default site description.') }}">
+		<meta property="og:image" content="{{ absolute_url(asset('images/logo.png')) }}">
+		<meta property="og:url" content="{{ app.request.uri }}">
+		<meta
+		property="og:type" content="website">
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="{{ meta_title|default('Default Site Title') }}">
+		<meta name="twitter:description" content="{{ meta_description|default('Default site description.') }}">
+		<meta
+		name="twitter:image" content="{{ absolute_url(asset('images/logo.png')) }}">
 
 		<!-- Author -->
-		<meta
-		name="author" content="Your Name">
-
-
-		<!-- Open Graph (For social media sharing like Facebook) -->
-		<meta property="og:title" content="Your Website Title">
-		<meta property="og:description" content="Your website description here.">
-		<meta property="og:image" content="https://example.com/your-image.jpg">
-		<meta
-		property="og:url" content="https://example.com">
-
-		<!-- Twitter Card (For Twitter sharing) -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="Your Website Title">
-		<meta name="twitter:description" content="Your website description here.">
-		<meta name="twitter:image" content="https://example.com/your-image.jpg">
-
+		<meta name="author" content="Ink & Frame Studios">
 
 		<meta name="robots" content="index, follow">
 
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
 
 		<link rel="icon" href="{{ asset('images/logo.png') }}">
 		{% block stylesheets %}
