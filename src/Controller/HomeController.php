@@ -121,7 +121,7 @@ final class HomeController extends AbstractController
                 "image" => "shihab.webp"
             ],
             [
-                "name" => "Vignesh RK",
+                "name" => "Vignesh Radhakrishnan",
                 "role" => "Sound Designer & Sync Sound Recordist",
                 "description" => "Designing immersive audio landscapes and capturing crystal-clear sync sound to elevate every frame.",
                 "instagram" => "https://www.instagram.com/rkvicky1990?igsh=MXF0Njk5dDB2dnZzbA==",
