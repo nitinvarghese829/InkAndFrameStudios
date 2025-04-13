@@ -20,7 +20,7 @@
 							<h2 class="text-white m-0" data-aos="fade-in">{{'Shine Ravi' | upper}}</h2>
 							<p class="text-primary" data-aos="fade-in">Creative director - Writing & direction</p>
 							<p class="m-0 text-white font-12" data-aos="fade-in">
-								Visionary. Storysmith. Culture Shaper.
+								Writer. Director. Dreamer.
 							</p>
 							<p class="m-0 text-white font-16" data-aos="fade-in">
 								An award-winning storyteller and writer-director, Shine drives the studio’s creative vision. With experience across multiple formats and genres, he shapes compelling narratives from script to screen, ensuring every story told is emotionally resonant and culturally relevant.
@@ -69,7 +69,7 @@
 							<h2 class="text-white m-0" data-aos="fade-in">{{'Vishnu Thandassery' | upper}}</h2>
 							<p class="text-primary" data-aos="fade-in">Creative director- Visuals & Industry relations</p>
 							<p class="m-0 text-white font-12" data-aos="fade-in">
-								Writer. Director. Dreamer.
+								Visionary. Storysmith. Culture Shaper.
 							</p>
 							<p class="m-0 text-white font-16" data-aos="fade-in">
 								A seasoned visual storyteller, Vishnu has worked with leading production houses and top-tier talent across the industry. He shapes the visual identity of Ink & Frame Studios while driving creative collaborations and industry partnerships. His sharp eye for design and deep network ensure the studio’s stories stand out — both on-screen and beyond.
@@ -145,160 +145,29 @@
 
 
 				<div class="row g-3 justify-content-center">
-					<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
+					{% for collaborator in collaborators %}
+						<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
+							<img src="{{asset('images/team/' ~ collaborator.image)}}" alt="{{ collaborator.name }}" class="img-fluid mx-auto">
+							<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
+								<div class="text-center">
+									<p class="text-white font-24 mb-2 name">{{ collaborator.name }}</p>
+									<p class="text-primary font-20 mb-3">{{ collaborator.role }}</p>
+									<p class="text-white font-12">{{ collaborator.description }}</p>
+								</div>
 
-						<img src="{{asset('images/team/shihab.webp')}}" alt="" class="img-fluid mx-auto">
-						<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
-							<div class="text-center">
-								<p class="text-white font-24 mb-2 name">Shihab Vennala</p>
-
-								<p class="text-primary font-20 mb-3">Chief Associate Director</p>
-
-								<p class="text-white font-12">Brings structure, rhythm, and sharp intuition to every project.</p>
-
-
+								<div class="d-flex justify-content-center gap-3">
+									<a target="_blank" href="{{ collaborator.instagram }}" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
+											<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+										</svg>
+									</a>
+									<a target="_blank" href="{{ collaborator.imdb }}" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
+										<small class="text-primary fw-bold font-12">IMDb</small>
+									</a>
+								</div>
 							</div>
-
-							<div class="d-flex justify-content-center gap-3">
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
-										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-									</svg>
-								</a>
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
-									<small class="text-primary fw-bold font-12">IMDb</small>
-								</a>
-
-							</div>
-
 						</div>
-
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
-
-						<img src="{{asset('images/team/shiju.webp')}}" alt="" class="img-fluid mx-auto">
-						<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
-							<div class="text-center">
-								<p class="text-white font-24 mb-2 name">Shiju Bhaaskar</p>
-
-								<p class="text-primary font-20 mb-3">Cinematographer</p>
-
-
-								<p class="text-white font-12">Crafts the visual language and tone of each story.</p>
-
-
-							</div>
-
-							<div class="d-flex justify-content-center gap-3">
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
-										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-									</svg>
-								</a>
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
-									<small class="text-primary fw-bold font-12">IMDb</small>
-								</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-
-					<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
-
-						<img src="{{asset('images/team/arun.webp')}}" alt="" class="img-fluid mx-auto">
-						<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
-							<div class="text-center">
-								<p class="text-white font-24 mb-2 name">Arun Rama Varma</p>
-
-								<p class="text-primary font-20 mb-3">Sound Designer</p>
-
-
-								<p class="text-white font-12">Creates immersive sonic worlds that elevate the emotional impact.</p>
-
-
-							</div>
-
-							<div class="d-flex justify-content-center gap-3">
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
-										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-									</svg>
-								</a>
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
-									<small class="text-primary fw-bold font-12">IMDb</small>
-								</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
-
-						<img src="{{asset('images/team/ram.webp')}}" alt="" class="img-fluid mx-auto">
-						<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
-							<div class="text-center">
-								<p class="text-white font-24 mb-2 name">Ram Parthan</p>
-								<p class="text-primary font-20 mb-3">Production Manager</p>
-
-
-								<p class="text-white font-12">Ensures smooth logistics, budgeting, and coordination.</p>
-
-
-							</div>
-
-							<div class="d-flex justify-content-center gap-3">
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
-										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-									</svg>
-								</a>
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
-									<small class="text-primary fw-bold font-12">IMDb</small>
-								</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
-
-						<img src="{{asset('images/team/asim.webp')}}" alt="" class="img-fluid mx-auto">
-						<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
-							<div class="text-center">
-								<p class="text-white font-24 mb-2 name">Asim Kottoor</p>
-								<p class="text-primary font-20 mb-3">Production In-Charge</p>
-
-
-								<p class="text-white font-12">Ground operations, team sync, and on-ground troubleshooting.</p>
-
-
-							</div>
-
-							<div class="d-flex justify-content-center gap-3">
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram text-primary m-0" viewbox="0 0 16 16">
-										<path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
-									</svg>
-								</a>
-								<a href="" class="p-3 d-flex justify-content-center align-items-center rounded-circle border same-width text-decoration-none">
-									<small class="text-primary fw-bold font-12">IMDb</small>
-								</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-
+					{% endfor %}
 				</div>
 			</div>
 

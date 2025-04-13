@@ -70,7 +70,87 @@ final class HomeController extends AbstractController
     #[Route('/our-team', name: 'app_our_team')]
     public function ourTeam()
     {
-        return $this->render('home/team.html.twig', []);
+        $collaborators = [
+            [
+                "name" => "Parthan C Ram",
+                "role" => "Chief Associate Director",
+                "description" => "Brings structure, rhythm, and sharp intuition to every project.",
+                "instagram" => "https://www.instagram.com/ram_parthan/",
+                "imdb" => "https://www.imdb.com/name/nm14016721/",
+                "image" => "ram.webp"
+            ],
+            [
+                "name" => "Samant Christopher Lakra",
+                "role" => "Sound Designer",
+                "description" => "Creates immersive sonic worlds that elevate the emotional impact.",
+                "instagram" => "https://www.instagram.com/noisereaction.in/",
+                "imdb" => "https://www.imdb.com/name/nm6379348/",
+                "image" => "christopher.webp"
+            ],
+            [
+                "name" => "Sreevalsan R S",
+                "role" => "Editor",
+                "description" => "Crafting compelling narratives through seamless cuts and cinematic storytelling.",
+                "instagram" => "https://www.instagram.com/sreevalsanrs/?hl=en",
+                "imdb" => "https://www.imdb.com/name/nm11925989/",
+                "imageNeeded" => true,
+                "image" => "sreevalsan.webp"
+            ],
+            [
+                "name" => "Arun Rama Varma",
+                "role" => "Sound Designer",
+                "description" => "Creates immersive sonic worlds that elevate the emotional impact.",
+                "instagram" => "https://www.instagram.com/arunramavarmathampuran/",
+                "imdb" => "https://www.imdb.com/name/nm3450758/",
+                "image" => "arun.webp"
+            ],
+            [
+                "name" => "Asim Kottoor",
+                "role" => "Coordinator",
+                "description" => "Ensuring smooth execution by managing schedules, logistics, and on-set coordination.",
+                "instagram" => "https://www.instagram.com/asimkottoor/",
+                "imdb" => "https://www.imdb.com/name/nm11261738/",
+                "image" => "asim.webp"
+            ],
+            [
+                "name" => "Shihab Vennala",
+                "role" => "Production Controller",
+                "description" => "Overseeing budgets, resources, and timelines to ensure efficient and cost-effective production.",
+                "instagram" => "https://www.instagram.com/shihabvennala/",
+                "imdb" => "https://www.imdb.com/name/nm9389299/",
+                "image" => "shihab.webp"
+            ],
+            [
+                "name" => "Vignesh Radhakrishnan",
+                "role" => "Sound Designer & Sync Sound Recordist",
+                "description" => "Designing immersive audio landscapes and capturing crystal-clear sync sound to elevate every frame.",
+                "instagram" => "https://www.instagram.com/rkvicky1990?igsh=MXF0Njk5dDB2dnZzbA==",
+                "imdb" => "https://m.imdb.com/name/nm8532938/",
+                "imageNeeded" => true,
+                "image" => "vignesh.webp"
+            ],
+            [
+                "name" => "Mashar Hamza",
+                "role" => "Costume Designer",
+                "description" => "Bringing characters to life through thoughtfully crafted costumes that reflect story and style.",
+                "instagram" => "https://www.instagram.com/masharhamsa/?hl=en",
+                "imdb" => "https://m.imdb.com/name/nm7946719/",
+                "image" => "hamsa.webp"
+            ],
+            [
+                "name" => "Rashid Sulaiman",
+                "role" => "Dynamic Visual Artist",
+                "description" => "Creating striking visual elements that enhance storytelling through motion, design, and imagination.",
+                "instagram" => "https://www.instagram.com/merakiartport?igsh=MXg4emEwc3M0cG9kdQ==",
+                "imdb" => "https://www.instagram.com/merakiartport?igsh=MXg4emEwc3M0cG9kdQ==",
+                "imageNeeded" => true,
+                "image" => "rashid.webp"
+            ]
+        ];
+
+        return $this->render('home/team.html.twig', [
+            'collaborators' => $collaborators
+        ]);
     }
 
     #[Route('/our-services', name: 'app_our_services')]
