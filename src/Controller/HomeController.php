@@ -6,22 +6,22 @@ use App\Entity\ContactUs;
 use App\Form\ContactUsFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Routing\Attribute\Route;
+
+use Symfony\Component\Mime\Email;
 
 final class HomeController extends AbstractController
 {
+    public function __construct(
+        private MailerInterface $mailer
+    ) {}
     #[Route('/', name: 'app_home')]
     public function index(): Response
     {
-        // $email = (new Email())
-        //     ->from('hello@inkandframestudios.com')
-        //     ->to('nitinmac10@gmail.com') // or dynamically from settings
-        //     ->subject('New Contact Form Submission')
-        //     ->html($this->twig->render('home/contact_lead.html.twig', [
-        //         'contact' => $contact
-        //     ]));
-
-        // $this->mailer->send($email);
         $projects = [
             1 => [
                 'name' => 'Premalu',

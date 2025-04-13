@@ -12,7 +12,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\ControllerEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mailer\Transport;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\RouterInterface;
 use Twig\Environment;
@@ -44,30 +46,34 @@ class ContactFormSubscriber implements EventSubscriberInterface
             // Add a flash message if you want
             $request->getSession()->getFlashBag()->add('success', 'Thank you for contacting us!');
 
+            $transport = Transport::fromDsn('smtp://inkandframestudios@gmail.com:iewnqauktalvmscc@smtp.gmail.com:587');
+            /// Create a Mailer object
+            $mailer = new Mailer($transport);
+            $email = (new Email());
 
 
-            //             $email = (new Email())
-            //                 ->from('hello@inkandframestudios.com')
-            //                 ->to('nitinmac10@gmail.com') // or dynamically from settings
-            //                 ->subject('New Contact Form Submission')
-            //                 ->html('<p>Hi,</p>
-            // <p>You have an inquiry from website</p>
+            $email = (new Email())
+                ->from('inkandframestudios@gmail.com')
+                ->to('hello@inkandframestudios.com') // or dynamically from settings
+                ->subject('New Contact Form Submission')
+                ->html('<p>Hi,</p>
+            <p>You have an inquiry from website</p>
 
-            // <h2>New Contact Request</h2>
-            // <p>
-            // 	<strong>Name:</strong>
-            // 	' . $form->get('name')->getData() . '</p>
-            // <p>
-            // 	<strong>Email:</strong>
-            // 	' . $form->get('email')->getData() . '</p>
-            // <p>
-            // 	<strong>Phone:</strong>
-            // 	' . $form->get('phoneNo')->getData() . '</p>
-            // <p>
-            // 	<strong>Message:</strong><br>' . $form->get('message')->getData() . '</p>
-            // ');
+            <h2>New Contact Request</h2>
+            <p>
+            	<strong>Name:</strong>
+            	' . $form->get('name')->getData() . '</p>
+            <p>
+            	<strong>Email:</strong>
+            	' . $form->get('email')->getData() . '</p>
+            <p>
+            	<strong>Phone:</strong>
+            	' . $form->get('phoneNo')->getData() . '</p>
+            <p>
+            	<strong>Message:</strong><br>' . $form->get('message')->getData() . '</p>
+            ');
 
-            //             $this->mailer->send($email);
+            $mailer->send($email);
 
             // Redirect to avoid form re-submission on page refresh
             $route = $request->attributes->get('_route');
