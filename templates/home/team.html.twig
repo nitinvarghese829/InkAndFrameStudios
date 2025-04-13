@@ -146,13 +146,13 @@
 
 				<div class="row g-3 justify-content-center">
 					{% for collaborator in collaborators %}
-						<div class="col-lg-4 col-md-4 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
-							<img src="{{asset('images/team/' ~ collaborator.image)}}" alt="{{ collaborator.name }}" class="img-fluid mx-auto">
-							<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x">
+						<div class="col-lg-4 col-md-6 col-sm-12 position-relative px-5 mx-auto" data-aos="fade-in">
+							<img src="{{asset('images/team/' ~ collaborator.image)}}" alt="{{ collaborator.name }}" class="img-fluid w-100 mx-auto">
+							<div class="position-absolute mb-2 bottom-0 start-50 translate-middle-x w-75">
 								<div class="text-center">
 									<p class="text-white font-24 mb-2 name">{{ collaborator.name }}</p>
-									<p class="text-primary font-20 mb-3">{{ collaborator.role }}</p>
-									<p class="text-white font-12">{{ collaborator.description }}</p>
+									<p class="text-primary font-20 mb-3 role">{{ collaborator.role }}</p>
+									<p class="text-white font-12 desc">{{ collaborator.description }}</p>
 								</div>
 
 								<div class="d-flex justify-content-center gap-3">
