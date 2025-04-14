@@ -46,14 +46,14 @@ class ContactFormSubscriber implements EventSubscriberInterface
             // Add a flash message if you want
             $request->getSession()->getFlashBag()->add('success', 'Thank you for contacting us!');
 
-            $transport = Transport::fromDsn('smtp://inkandframestudios@gmail.com:iewnqauktalvmscc@smtp.gmail.com:587');
+            $transport = Transport::fromDsn('smtp://nitinemailsend@gmail.com:rftbffgqtkvrgake@smtp.gmail.com:587');
             /// Create a Mailer object
             $mailer = new Mailer($transport);
             $email = (new Email());
 
 
             $email = (new Email())
-                ->from('inkandframestudios@gmail.com')
+                ->from('nitinemailsend@gmail.com')
                 ->to('nitinvarghese829@gmail.com') // or dynamically from settings
                 ->subject('New Contact Form Submission')
                 ->html('<p>Hi,</p>
