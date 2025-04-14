@@ -228,7 +228,7 @@ final class HomeController extends AbstractController
         return $this->render('home/services.html.twig', ['services' => $services]);
     }
 
-    #[Route('/admin/contact/us/list', name: 'admin_contact_us_list')]
+    #[Route('/abcd/contact/us/list', name: 'admin_contact_us_list')]
     public function adminContactUs(ContactUsRepository $contactUsRepository)
     {
         $contacts = $contactUsRepository->findAll();
