@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ContactUs;
 use App\Form\ContactUsFormType;
+use App\Repository\ContactUsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -225,5 +226,12 @@ final class HomeController extends AbstractController
 
 
         return $this->render('home/services.html.twig', ['services' => $services]);
+    }
+
+    #[Route('/admin/contact/us/list', name: 'admin_contact_us_list')]
+    public function adminContactUs(ContactUsRepository $contactUsRepository)
+    {
+        $contacts = $contactUsRepository->findAll();
+        dd($contacts);
     }
 }
