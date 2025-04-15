@@ -46,34 +46,34 @@ class ContactFormSubscriber implements EventSubscriberInterface
             // Add a flash message if you want
             $request->getSession()->getFlashBag()->add('success', 'Thank you for contacting us!');
 
-            $transport = Transport::fromDsn('smtp://inkandframestudios@gmail.com:cfyebgtpbsvlpyxc@smtp.gmail.com:587');
-            /// Create a Mailer object
-            $mailer = new Mailer($transport);
-            $email = (new Email());
+            // $transport = Transport::fromDsn('smtp://inkandframestudios@gmail.com:cfyebgtpbsvlpyxc@smtp.gmail.com:587');
+            // /// Create a Mailer object
+            // $mailer = new Mailer($transport);
+            // $email = (new Email());
 
 
-            $email = (new Email())
-                ->from('inkandframestudios@gmail.com')
-                ->to('nitinvarghese829@gmail.com') // or dynamically from settings
-                ->subject('New Contact Form Submission')
-                ->html('<p>Hi,</p>
-            <p>You have an inquiry from website</p>
+            // $email = (new Email())
+            //     ->from('inkandframestudios@gmail.com')
+            //     ->to('nitinvarghese829@gmail.com') // or dynamically from settings
+            //     ->subject('New Contact Form Submission')
+            //     ->html('<p>Hi,</p>
+            // <p>You have an inquiry from website</p>
 
-            <h2>New Contact Request</h2>
-            <p>
-            	<strong>Name:</strong>
-            	' . $form->get('name')->getData() . '</p>
-            <p>
-            	<strong>Email:</strong>
-            	' . $form->get('email')->getData() . '</p>
-            <p>
-            	<strong>Phone:</strong>
-            	' . $form->get('phoneNo')->getData() . '</p>
-            <p>
-            	<strong>Message:</strong><br>' . $form->get('message')->getData() . '</p>
-            ');
+            // <h2>New Contact Request</h2>
+            // <p>
+            // 	<strong>Name:</strong>
+            // 	' . $form->get('name')->getData() . '</p>
+            // <p>
+            // 	<strong>Email:</strong>
+            // 	' . $form->get('email')->getData() . '</p>
+            // <p>
+            // 	<strong>Phone:</strong>
+            // 	' . $form->get('phoneNo')->getData() . '</p>
+            // <p>
+            // 	<strong>Message:</strong><br>' . $form->get('message')->getData() . '</p>
+            // ');
 
-            $mailer->send($email);
+            // $mailer->send($email);
 
             // Redirect to avoid form re-submission on page refresh
             $route = $request->attributes->get('_route');
