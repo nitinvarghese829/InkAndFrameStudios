@@ -36,4 +36,14 @@ $(function () {
       thumbnail.appendChild(iframe);
     });
   });
+
+  $(".submit-contact-us").one("click", function () {
+    const $btn = $(this);
+
+    setTimeout(function () {
+      $btn.find(".submit-loader.d-none").removeClass("d-none");
+      $btn.find(".submit-text").addClass("d-none");
+      $btn.attr("disabled", "true");
+    }, 10); // allow native submit to proceed
+  });
 });

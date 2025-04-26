@@ -79,7 +79,12 @@
 					</div>
 
 					<div class="mb-3">
-						<button type="submit" class="btn btn-primary fw-bold text-black w-100">Submit</button>
+						<button type="submit" class="btn btn-primary fw-bold text-black w-100 submit-contact-us d-flex align-items-center justify-content-center">
+							<span class="submit-text">Submit</span>
+							<div class="spinner-border submit-loader d-none" role="status">
+								<span class="visually-hidden">Loading...</span>
+							</div>
+						</button>
 					</div>
 
 					{{ form_end(contactForm) }}

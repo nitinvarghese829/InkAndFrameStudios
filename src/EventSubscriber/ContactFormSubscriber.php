@@ -51,10 +51,11 @@ class ContactFormSubscriber implements EventSubscriberInterface
             $mailer = new Mailer($transport);
             $email = (new Email());
 
+            $recipients = array_map('trim', explode(',', $_ENV['MAIL_TO']));
 
             $email = (new Email())
                 ->from('emails@inkandframestudios.com')
-                ->to($_ENV['MAIL_TO']) // or dynamically from settings
+                ->to(...$recipients) // or dynamically from settings
                 ->subject('New Contact Form Submission')
                 ->html('<p>Hi,</p>
             <p>You have an inquiry from website</p>
