@@ -50,30 +50,43 @@ class AdminCrudController extends AbstractCrudController
                 ->setChoices([
                     'Admin' => 'ROLE_ADMIN',
                     'Editor' => 'ROLE_EDITOR',
-                ]),
+                ])
+                ->setFormTypeOptions([
+                    'multiple' => false,
+                    'expanded' => false,
+                    'mapped' => false, // we will handle it manually
+                ])
+                ->onlyOnForms(),
         ];
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        $this->handlePassword($entityInstance);
+        $this->handlePasswordAndRole($entityInstance);
         parent::persistEntity($entityManager, $entityInstance);
     }
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        $this->handlePassword($entityInstance);
+        $this->handlePasswordAndRole($entityInstance);
         parent::updateEntity($entityManager, $entityInstance);
     }
 
-    private function handlePassword(Admin $admin): void
+
+    private function handlePasswordAndRole(Admin $admin): void
     {
         $request = $this->getContext()->getRequest();
-        $plainPassword = $request->request->all()['Admin']['password'] ?? null;
+        $data = $request->request->all()['Admin'] ?? [];
 
-        if ($plainPassword) {
-            $hashedPassword = $this->passwordHasher->hashPassword($admin, $plainPassword);
+        // Handle password
+        if (!empty($data['password'])) {
+            $hashedPassword = $this->passwordHasher->hashPassword($admin, $data['password']);
             $admin->setPassword($hashedPassword);
+        }
+
+        // Handle single role
+        if (!empty($data['roles']) && is_string($data['roles'])) {
+            $admin->setRoles([$data['roles']]);
         }
     }
 
