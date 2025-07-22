@@ -36,28 +36,18 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        return [
+        $menuItems = [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::subMenu('Users', 'fa fa-tags')->setSubItems([
-                MenuItem::linkToCrud('Admin', 'fa fa-user-tie', Admin::class),
-            ]),
-            MenuItem::linkToCrud('Blogs', 'fa fa-blog', Blog::class),
-            // MenuItem::subMenu('Product', 'fa fa-tags')->setSubItems([
-            //     MenuItem::linkToCrud('Product', 'fa-cart-shopping', Product::class),
-            //     MenuItem::linkToCrud('Category', 'fa-cart-shopping', ProductCategory::class),
-            // ]),
-            // MenuItem::subMenu('Service', 'fa fa-tags')->setSubItems([
-            //     MenuItem::linkToCrud('Services', 'fa-cart-shopping', Services::class),
-            // ]),
-            // MenuItem::linkToCrud('Application', 'fa-cart-shopping', Application::class),
-            // MenuItem::subMenu('Knowledge Hub', 'fa fa-tags')->setSubItems([
-            //     MenuItem::linkToCrud('Blogs', 'fa-blogs', Blogs::class),
-            //     MenuItem::linkToCrud('Blog Post', 'fa-blogs', BlogPost::class),
-            // ]),
-            // MenuItem::linkToCrud('Enquiry', 'fa-cart-shopping', Enquiry::class),
-            // MenuItem::linkToCrud('Pages', 'fa-cart-shopping', Pages::class),
+            MenuItem::linkToCrud('Blogs', 'fa fa-blog', \App\Entity\Blog::class),
             MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
-
         ];
+
+        if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_SUPER_ADMIN')) {
+            $menuItems[] = MenuItem::subMenu('Users', 'fa fa-tags')->setSubItems([
+                MenuItem::linkToCrud('Admin', 'fa fa-user-tie', \App\Entity\Admin::class),
+            ]);
+        }
+
+        return $menuItems;
     }
 }
