@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% set meta_title = 'About Ink & Frame Studios – Our Creative Journey' %}
+{% set meta_description = "Learn about Ink & Frame Studios' mission, vision, and the passionate team behind our compelling visual stories. Join us in crafting narratives that resonate." %}
+{% set meta_keywords = 'Ink & Frame Studios, creative team, visual storytelling, our mission, our vision' %}
+
+
+{% block body %}
+	<section class="header-about-us">
+		<div class="d-flex justify-content-center align-items-center h-100">
+			<h1 class="text-primary py-5" data-aos="fade-in">BLOGS</h1>
+
+		</div>
+	</section>
+
+	<section class="about-us">
+		<div class="bg-black py-5">
+			<div class="container">
+				<h1 class="text-center text-primary" data-aos="fade-in">Blogs</h1>
+
+
+				<div class="row g-4">
+                    {% if blogs %}    
+                        {% for blog in blogs %}
+                            <div class="col-md-6 col-lg-4">
+                                <a href="{{ path('app_blog_detail', {'slug' : blog.slug}) }}" class="text-decoration-none">
+                                    
+                                <div class="card blog-card border-0 h-100">
+                                    <img class="card-img-top" src="{{ blog.getBlogImageDataUrl() }}" alt="{{ blog.title }}">
+                                    
+                                    <div class="card-body d-flex flex-column">
+                                    <p class="fw-bold card-title">{{ blog.title }}</h5>
+                                    <p class="card-text text-muted line-clamp">{{ blog.content|striptags }}</p>
+                                    <p class="m-0">Read More...</p>
+                                    
+                                </div>
+                                </a>
+                            </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No blog posts available.</p>
+                    {% endif %}
+                    </div>
+                </div>
+			</div>
+
+
+		</div>
+	</section>
+	{{ include('home/contact.html.twig') }}
+
+{% endblock %}

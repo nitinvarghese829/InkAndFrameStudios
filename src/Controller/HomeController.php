@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ContactUs;
 use App\Form\ContactUsFormType;
+use App\Repository\BlogRepository;
 use App\Repository\ContactUsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -226,6 +227,24 @@ final class HomeController extends AbstractController
 
 
         return $this->render('home/services.html.twig', ['services' => $services]);
+    }
+
+    #[Route('/blogs', name: 'app_blogs')]
+    public function blogs(BlogRepository $blogRepository)
+    {
+        $blogs = $blogRepository->findBy(['isActive' => true], ['createdAt' => 'DESC']);
+
+        return $this->render('home/blogs.html.twig', ['blogs' => $blogs]);
+    }
+
+    #[Route('/blogs/{slug}', name: 'app_blog_detail')]
+    public function blogDetail(BlogRepository $blogRepository, $slug)
+    {
+        $blog = $blogRepository->findOneBy(['isActive' => true, 'slug' => $slug], ['createdAt' => 'DESC']);
+
+        $randomBlogs = $blogRepository->findRandomBlogs($slug);
+
+        return $this->render('home/blog-detail.html.twig', ['blog' => $blog, 'randomBlogs' => $randomBlogs]);
     }
 
     #[Route('/admin/contact/us/list', name: 'admin_contact_us_list')]

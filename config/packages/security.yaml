@@ -5,6 +5,10 @@ security:
   # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
   providers:
     # used to reload user from session & other features (e.g. switch_user)
+    app_admin_provider:
+      entity:
+        class: App\Entity\Admin
+        property: email
     app_user_provider:
       entity:
         class: App\Entity\User
@@ -13,14 +17,31 @@ security:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
-    main:
+    admin:
       lazy: true
-      provider: app_user_provider
-      custom_authenticator: App\Security\CustomAuthenticator
+      provider: app_admin_provider
+      custom_authenticator:
+        - App\Security\AdminAuthenticator
       logout:
-        path: app_logout
+        path: app_admin_logout
         # where to redirect after logout
         # target: app_any_route
+      pattern: ^/admin
+
+      remember_me:
+        secret: "%kernel.secret%"
+        lifetime: 604800
+        path: /admin/login
+        always_remember_me: true
+
+    main:
+      lazy: true
+      # provider: app_user_provider
+      # custom_authenticator: App\Security\CustomAuthenticator
+      # logout:
+      #   path: app_logout
+      # where to redirect after logout
+      # target: app_any_route
 
       remember_me:
         secret: "%kernel.secret%"
@@ -37,7 +58,9 @@ security:
   # Easy way to control access for large sections of your site
   # Note: Only the *first* access control that matches will be used
   access_control:
+    - { path: ^/admin/login, roles: PUBLIC_ACCESS }
     - { path: ^/admin, roles: ROLE_ADMIN }
+    # - { path: ^/admin, roles: ROLE_ADMIN }
     # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:

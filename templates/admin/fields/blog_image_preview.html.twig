@@ -1,0 +1,8 @@
+{{ dump(field) }}
+{% if field.value %}
+    <div style="margin-top: 10px;">
+        {{ field.value|raw }}
+    </div>
+{% else %}
+    <div>No image uploaded.</div>
+{% endif %}

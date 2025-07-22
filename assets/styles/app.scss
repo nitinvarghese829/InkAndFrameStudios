@@ -126,3 +126,29 @@ p {
     }
   }
 }
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+.line-clamp {
+  display: -webkit-box;
+  height: 85px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.random-card-img {
+  width: 250px;
+  height: 150px;
+}

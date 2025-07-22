@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+	{{ blog.title }}
+{% endblock %}
+{% block meta_description %}
+	{{ blog.metaDescription }}
+{% endblock %}
+{% block meta_keywords %}
+	{{ blog.metaKeywords }}
+{% endblock %}
+{% block meta_author %}
+	{{ blog.author }}
+{% endblock %}
+{% block meta_tags %}
+	<!-- Other meta tags -->
+	<meta property="og:title" content="{{ blog.title }}"/>
+	<meta property="og:description" content="{{ blog.metaDescription }}"/>
+	{# <meta property="og:image" content="{{ blog.getBlogImageDataUrl() }}"/> #}
+	<meta property="og:url" content="{{ app.request.uri }}"/>
+	<meta property="og:type" content="article"/>
+	<!-- Other meta tags -->
+
+	<!-- Other meta tags -->
+	<meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="{{ blog.title }}"/>
+	<meta name="twitter:description" content="{{ blog.metaDescription }}"/>
+	{# <meta name="twitter:image" content="{{ blog.getBlogImageDataUrl() }}"/> #}
+	<meta name="twitter:url" content="{{ app.request.uri }}"/>
+<!-- Other meta tags -->
+{% endblock %}
+
+{% block body %}
+	<section class="header-about-us">
+		<div class="d-flex justify-content-center align-items-center h-100">
+			<h1 class="text-primary py-5" data-aos="fade-in">BLOGS</h1>
+
+		</div>
+	</section>
+
+	<section class="about-us">
+		<div class="bg-black py-5">
+			<div class="container">
+				<div class="row g-3">
+					<div class="col-lg-8 col-md-12">
+						<img class="img-fluid" src="{{ blog.getBlogImageDataUrl() }}" alt="{{ blog.title }}">
+                                    
+						<p class="display-5 text-white">{{ blog.title }}</p>
+
+						<div class="text-white">
+							{{ blog.content | raw }}
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<!-- Trending Post -->
+						<div class="widget widget-post">
+							<div class="widget-title">
+								<h3 class="text-primary text-center text-md-start">Trending Now</h3>
+							</div>
+							<div>
+								{% for randomBlog in randomBlogs  %}
+								<div class="mb-2">
+								<a class="text-decoration-none mb-2" href="{{ path('app_blog_detail', {'slug' : randomBlog.slug}) }}">
+										<div class="bg-primary rounded-3 p-3">
+										
+											<div class="row">
+												<div class="col-md-4 col-sm-12 rounded-5 mx-auto">
+													<img class="img-fluid object-fit-cover rounded-3 random-card-img h-100" src="{{ randomBlog.getBlogImageDataUrl() }}" alt="{{ randomBlog.title }}"/>
+												</div>
+
+												<div class="col-md-8 col-sm-12 title-date">
+													<div class="text-black font-20 fw-bold">{{ randomBlog.title }}</div>
+
+													<div class="text-black font-12">{{ randomBlog.content | slice(0, 150) | striptags ~ '...' }}</div>
+													<small class="text-black" style="font-size: 12px">{{ randomBlog.createdAt | date('jS M, y') }}</small>
+												</div>
+											</div>
+										</div> 
+									</a>
+								</div>
+									
+								{% endfor %}
+							</div>
+						</div>
+						<!-- End Trending Post -->
+						<!-- Latest Post -->
+						
+					</div>
+				</div>
+
+
+				
+			</div>
+
+
+		</div>
+	</section>
+	{{ include('home/contact.html.twig') }}
+
+{% endblock %}

@@ -11,6 +11,8 @@
     "doctrine/doctrine-bundle": "^2.14",
     "doctrine/doctrine-migrations-bundle": "^3.4",
     "doctrine/orm": "^3.3",
+    "easycorp/easyadmin-bundle": "^4.24",
+    "friendsofsymfony/ckeditor-bundle": "^2.6",
     "guzzlehttp/guzzle": "7.9.2",
     "phpdocumentor/reflection-docblock": "^5.6",
     "phpstan/phpdoc-parser": "^2.1",
@@ -80,7 +82,8 @@
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
       "assets:install %PUBLIC_DIR%": "symfony-cmd",
-      "importmap:install": "symfony-cmd"
+      "importmap:install": "symfony-cmd",
+      "ckeditor:install": "symfony-cmd"
     },
     "post-install-cmd": [
       "@auto-scripts"

@@ -4,29 +4,15 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>{{ meta_title|default('Default Site Title') }}</title>
-		<meta name="description" content="{{ meta_description|default('Default site description.') }}">
-		<meta
-		name="keywords" content="{{ meta_keywords|default('default, keywords, here') }}">
-
-		<!-- Open Graph -->
-		<meta property="og:title" content="{{ meta_title|default('Default Site Title') }}">
-		<meta property="og:description" content="{{ meta_description|default('Default site description.') }}">
-		<meta property="og:image" content="{{ absolute_url(asset('images/logo.png')) }}">
-		<meta property="og:url" content="{{ app.request.uri }}">
-		<meta
-		property="og:type" content="website">
-
-		<!-- Twitter -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="{{ meta_title|default('Default Site Title') }}">
-		<meta name="twitter:description" content="{{ meta_description|default('Default site description.') }}">
-		<meta
-		name="twitter:image" content="{{ absolute_url(asset('images/logo.png')) }}">
-
-		<!-- Author -->
-		<meta name="author" content="Ink & Frame Studios">
-
+		<title>
+			{% block title %}Ink & Frame Studios{% endblock %}
+		</title>
+		<meta name="description" content="{% block meta_description %}Default meta description.{% endblock %}">
+		<meta name="keywords" content="{% block meta_keywords %}default, keywords{% endblock %}">
+		<meta name="author" content="{% block meta_author %}Default Author{% endblock %}">
+		{% block meta_tags %}{% endblock %}
+		
+		
 		<meta name="robots" content="index, follow">
 
 
