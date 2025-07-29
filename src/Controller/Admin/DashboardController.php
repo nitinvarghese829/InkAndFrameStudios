@@ -48,6 +48,8 @@ class DashboardController extends AbstractDashboardController
             ]);
         }
 
+        $menuItems[] = MenuItem::linkToCrud('Services', 'fa fa-cogs', \App\Entity\Services::class);
+
         return $menuItems;
     }
 }

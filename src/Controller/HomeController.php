@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\ContactUs;
+use App\Entity\Services;
 use App\Form\ContactUsFormType;
 use App\Repository\BlogRepository;
 use App\Repository\ContactUsRepository;
+use App\Repository\ServicesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -155,78 +157,25 @@ final class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/our-services', name: 'app_our_services')]
-    public function ourServices()
+    #[Route('/services', name: 'app_our_services')]
+    public function ourServices(ServicesRepository $servicesRepository)
     {
-        $services = [
-            [
-                'title' => 'Script Writing & Development',
-                'icon' => 'fas fa-feather-alt', // feather/pen for writing
-                'points' => [
-                    'Original screenplays for films, series, and ad films',
-                    'Script doctoring, dialogue writing, and adaptation',
-                    'Pitch decks and story bibles for producers and OTT platforms',
-                ],
-            ],
-            [
-                'title' => 'Ad Film Production',
-                'icon' => 'fas fa-video', // represents advertising and media
-                'points' => [
-                    'End-to-end ad film creation (concept to post-production)',
-                    'Brand commercials, digital ads, and social media campaigns',
-                    'Cinematic storytelling for product launches and promos',
-                ],
-            ],
-            [
-                'title' => 'Film Production',
-                'icon' => 'fas fa-film', // for filmmaking
-                'points' => [
-                    'Short & indie feature film development & production',
-                    'Co-production with emerging filmmakers',
-                    'Budgeting, scheduling, & on-ground execution',
-                    'Line production services for third-party films',
-                ],
-            ],
-            [
-                'title' => 'Branded Content & Digital Storytelling',
-                'icon' => 'fas fa-bullhorn', // fits digital content campaigns
-                'points' => [
-                    'Story-led branded films and content campaigns',
-                    'Digital content for web and social platforms',
-                    'Content strategy aligned with brand identity',
-                ],
-            ],
-            [
-                'title' => 'Writers’ Room & Creative Development',
-                'icon' => 'fas fa-pen-nib', // collaboration / writing
-                'points' => [
-                    'Collaborative script development for long-form',
-                    'Screenplay formatting and structural support',
-                    'Ideation for pitch-worthy concepts',
-                ],
-            ],
-            [
-                'title' => 'Co-Production & Creative Partnerships',
-                'icon' => 'fas fa-handshake', // partnership
-                'points' => [
-                    'Co-investment in indie or small-budget projects',
-                    'Creative collab with writers, directors, producers',
-                    'Pitch prep for film festivals or OTT platforms',
-                ],
-            ],
-            [
-                'title' => 'Creative Consulting',
-                'icon' => 'fas fa-lightbulb', // ideas/consulting
-                'points' => [
-                    'Story and screenplay guidance',
-                    'Visual storytelling and narrative shaping',
-                    'Support for creators, brands, and agencies',
-                ],
-            ],
-        ];
-
+        $services = $servicesRepository->findBy(['isActive' => true]);
 
         return $this->render('home/services.html.twig', ['services' => $services]);
+    }
+
+    #[Route('/services/{slug}', name: 'app_our_services_detail')]
+    public function serviceDetail(ServicesRepository $servicesRepository, $slug)
+    {
+        $service = $servicesRepository->findOneBy(['isActive' => true, 'slug' => $slug]);
+        $otherServices = $servicesRepository->findRandomServices();
+
+        if (!$service) {
+            throw $this->createNotFoundException('Service not found');
+        }
+
+        return $this->render('service-detail.html.twig', ['service' => $service, 'otherServices' => $otherServices]);
     }
 
     #[Route('/blogs', name: 'app_blogs')]

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% set meta_title = 'Our Services – Comprehensive Visual Solutions' %}
+{% set meta_description = 'Explore the diverse services offered by Ink & Frame Studios, including photography, videography, editing, and more, tailored to bring your vision to life.' %}
+{% set meta_keywords = 'photography services, videography, editing, visual solutions, creative services' %}
+
+{% block body %}
+	<section class="header-services">
+		<div class="d-flex justify-content-center align-items-center h-100">
+			<h1 class="text-primary py-5" data-aoss="fade-in">{{ service.title }}</h1>
+		</div>
+	</section>
+
+    <section class="bg-black py-5">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="text-primary" data-aoss="fade-in">Why Choose Our {{ service.title }}</h1>
+                <p class="text-white m-0 font-16" data-aoss="fade-in">
+                    Trusted by countless clients, our {{ service.title|lower }} stands out for quality, creativity, and results that speak.
+                </p>
+            </div>
+        </div>
+    </section>
+
+	<section class="bg-black">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-9 col-md-6 col-sm-12">
+					<div class="service-detail">
+						<div class="text-white">{{ service.detailedDescription|raw }}</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12">
+                    <h3 class="text-primary">Other Services</h3>
+                    {% for item in otherServices %}
+                        <a href="{{ path('app_our_services_detail', {'slug': item.slug}) }}" class="text-decoration-none">
+                            <div class="other-service d-flex align-items-center gap-3 border border-primary rounded-2 p-3 mb-3">
+                                <i class="{{ item.icon }} fa-2x text-primary"></i>
+                                <p class="text-white m-0">{{ item.title }}</p>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+			</div>
+		</div>
+	</section>
+
+	{{ include('home/contact.html.twig') }}
+
+{% endblock %}

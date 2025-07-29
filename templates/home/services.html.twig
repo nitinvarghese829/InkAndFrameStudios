@@ -30,17 +30,17 @@
 			<div class="row justify-content-center">
 				{% for serviceName, service in services %}
 					<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-						<div class="service-card rounded-2 p-4 h-100">
-							<div class="text-center">
-								<i class="{{ service.icon }} fa-2x text-primary mb-2"></i>
+						<a href="{{ path('app_our_services_detail', {'slug': service.slug}) }}" class="text-decoration-none">
+							<div class="service-card rounded-2 p-4 h-100">
+								<div class="text-center">
+									<i class="{{ service.icon }} fa-2x text-primary mb-2"></i>
+								</div>
+								<p class="text-center text-primary fw-bold mb-2">{{ service.title }}</p>	
+								<div class="text-white">
+									{{ service.description|raw }}
+								</div>
 							</div>
-							<p class="text-center text-primary fw-bold mb-2">{{ service.title }}</p>
-							<ul>
-								{% for point in service.points %}
-									<li class="text-white">{{ point }}</li>
-								{% endfor %}
-							</ul>
-						</div>
+						</a>
 					</div>
 
 				{% endfor %}

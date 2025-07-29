@@ -152,3 +152,14 @@ p {
   width: 250px;
   height: 150px;
 }
+
+.service-detail {
+  img {
+    text-align: center;
+  }
+  figure {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+}
