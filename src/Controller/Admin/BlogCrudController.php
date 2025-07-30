@@ -32,7 +32,12 @@ class BlogCrudController extends AbstractCrudController
         $fileds =  [
             IdField::new('id')->onlyOnIndex(),
             TextField::new('title'),
-            TextEditorField::new('content', 'Content')->onlyOnForms(),
+            TextareaField::new('content', 'Content')
+                ->setFormTypeOption('attr', [
+                    'class' => 'tinymce',
+                    'data-controller' => 'tinymce',
+                    'data-action' => 'turbo:load->tinymce#createEditor',
+                ])->onlyOnForms(),
             Field::new('blogImage')
                 ->setFormType(FileType::class)
                 ->setLabel('Blog Image')

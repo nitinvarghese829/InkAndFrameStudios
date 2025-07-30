@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\ContactUs;
+use Eckinox\TinymceBundle\Form\Type\TinymceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -50,7 +51,7 @@ class ContactUsFormType extends AbstractType
                     'maxlength' => 15,
                 ]
             ])
-            ->add('message', TextareaType::class, [
+            ->add('message', TinymceType::class, [
                 'required' => false,
                 'label' => 'Message',
                 'label_attr' => [
@@ -60,6 +61,10 @@ class ContactUsFormType extends AbstractType
                     'class' => 'form-control',
                     'rows' => 5,
                     'maxlength' => 1000,
+                    'api-key' => "no-api-key",
+                    'data-controller' => 'tinymce',
+                    'data-action' => 'turbo:load->tinymce#createEditor',
+
                 ],
             ])
         ;

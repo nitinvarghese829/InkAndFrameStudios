@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use phpDocumentor\Reflection\Types\Boolean;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ServicesCrudController extends AbstractCrudController
 {
@@ -28,9 +29,20 @@ class ServicesCrudController extends AbstractCrudController
             TextField::new('icon')
                 ->setLabel('Icon')
                 ->setHelp('Enter the icon class using https://fontawesome.com/search (e.g., "fa fa-icon-name")'),
-            TextEditorField::new('description')->setLabel('Description')->setHelp('Enter a small description of the service to be displayed in listing page')->onlyOnForms(),
+            TextareaField::new('description')
+                ->setFormTypeOption('attr', [
+                    'class' => 'tinymce',
+                    'data-controller' => 'tinymce',
+                    'data-action' => 'turbo:load->tinymce#createEditor',
+                ])->setLabel('Description')
+                ->setHelp('Enter a small description of the service to be displayed in listing page')->onlyOnForms(),
             BooleanField::new('isActive'),
-            TextEditorField::new('detailedDescription')
+            TextareaField::new('detailedDescription')
+                ->setFormTypeOption('attr', [
+                    'class' => 'tinymce',
+                    'data-controller' => 'tinymce',
+                    'data-action' => 'turbo:load->tinymce#createEditor',
+                ])
                 ->setLabel('Detailed Description')
                 ->setHelp('Enter a detailed description of the service, supports HTML formatting.')->onlyOnForms(),
         ];

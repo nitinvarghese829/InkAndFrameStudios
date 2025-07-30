@@ -25,6 +25,10 @@
 
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
+			{{ tinymce_scripts() }}
+			{# <script src="https://cdn.tiny.cloud/1/gpl/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> #}
+
+			{# <script src="https://cdn.tiny.cloud/1/g41us0t3d116jamizzc1fvdm1n3c7ywuk54w26tf7qj9x79o/tinymce/8/tinymce.min.js" referrerpolicy="origin" crossorigin="anonymous"></script> #}
 			<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 		{% endblock %}

@@ -47,6 +47,9 @@
             "config/routes/easyadmin.yaml"
         ]
     },
+    "eckinox/tinymce-bundle": {
+        "version": "v2.0.0"
+    },
     "friendsofsymfony/ckeditor-bundle": {
         "version": "2.6",
         "recipe": {
