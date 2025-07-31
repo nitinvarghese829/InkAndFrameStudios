@@ -43,17 +43,17 @@ class DashboardController extends AbstractDashboardController
         $menuItems = [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
             MenuItem::linkToCrud('Blogs', 'fa fa-blog', \App\Entity\Blog::class),
-            MenuItem::linkToLogout('Logout', 'fa fa-sign-out'),
             MenuItem::linkToCrud('Services', 'fa fa-cogs', \App\Entity\Services::class),
-            MenuItem::linkToCrud('Enquiries', 'fa-regular fa-address-book', ContactUs::class)
         ];
 
         if ($this->isGranted('ROLE_ADMIN') || $this->isGranted('ROLE_SUPER_ADMIN')) {
             $menuItems[] = MenuItem::subMenu('Users', 'fa fa-tags')->setSubItems([
                 MenuItem::linkToCrud('Admin', 'fa fa-user-tie', \App\Entity\Admin::class),
             ]);
+            $menuItems[] = MenuItem::linkToCrud('Enquiries', 'fa-regular fa-address-book', ContactUs::class);
         }
 
+        $menuItems[] =  MenuItem::linkToLogout('Logout', 'fa fa-sign-out');
 
         return $menuItems;
     }
