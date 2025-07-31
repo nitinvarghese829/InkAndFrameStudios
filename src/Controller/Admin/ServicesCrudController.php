@@ -26,6 +26,7 @@ class ServicesCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnIndex(),
             TextField::new('title'),
+            TextField::new('slug')->onlyOnForms(),
             TextField::new('icon')
                 ->setLabel('Icon')
                 ->setHelp('Enter the icon class using https://fontawesome.com/search (e.g., "fa fa-icon-name")'),
@@ -50,18 +51,11 @@ class ServicesCrudController extends AbstractCrudController
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         parent::updateEntity($entityManager, $entityInstance);
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         parent::persistEntity($entityManager, $entityInstance);
-    }
-
-    private function generateSlug(string $name): string
-    {
-        return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name), '-'));
     }
 }

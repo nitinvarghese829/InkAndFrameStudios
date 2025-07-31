@@ -39,6 +39,11 @@ export default class extends Controller {
           images_reuse_filename: true,
           paste_data_images: true,
           branding: false,
+          setup: (editor) => {
+            editor.on("change", () => {
+              editor.save(); // Syncs content back to the <textarea>
+            });
+          },
         });
       }, 200);
     });

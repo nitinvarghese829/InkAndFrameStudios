@@ -35,6 +35,7 @@ class BlogCrudController extends AbstractCrudController
         $fileds =  [
             IdField::new('id')->onlyOnIndex(),
             TextField::new('title'),
+            TextField::new('slug')->onlyOnForms(),
             TextareaField::new('content', 'Content')
                 ->setFormTypeOption('attr', [
                     'class' => 'tinymce',
@@ -83,7 +84,7 @@ class BlogCrudController extends AbstractCrudController
                 ])
                 ->onlyOnForms(),
             TextareaField::new('faqSchema', 'FAQ Schema (JSON-LD)')
-                ->setFormTypeOption('attr', ['rows' => 10, 'class' => 'monospace'])
+                ->setFormTypeOption('attr', ['rows' => 10, 'class' => 'monospace'])->onlyOnForms()
                 ->formatValue(function ($value, $entity) {
                     return json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
                 }),
@@ -94,18 +95,14 @@ class BlogCrudController extends AbstractCrudController
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-
         $this->handleImageUpload($entityInstance);
-        $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         $entityInstance->setCreatedBy($this->getUser());
         parent::updateEntity($entityManager, $entityInstance);
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-
         $this->handleImageUpload($entityInstance);
-        $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         $entityInstance->setCreatedBy($this->getUser());
         $entityInstance->setCreatedAt(date_create('now'));
         parent::persistEntity($entityManager, $entityInstance);
@@ -120,10 +117,5 @@ class BlogCrudController extends AbstractCrudController
             $binaryData = file_get_contents($uploadedFile->getPathname());
             $entity->setBlogImage($binaryData);
         }
-    }
-
-    private function generateSlug(string $name): string
-    {
-        return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $name), '-'));
     }
 }
