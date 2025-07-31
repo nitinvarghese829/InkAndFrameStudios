@@ -11,6 +11,7 @@
 		<meta name="keywords" content="{% block meta_keywords %}default, keywords{% endblock %}">
 		<meta name="author" content="{% block meta_author %}Default Author{% endblock %}">
 		{% block meta_tags %}{% endblock %}
+		<link rel="canonical" href="{{ app.request.uri }}">
 		
 		
 		<meta name="robots" content="index, follow">

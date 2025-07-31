@@ -51,7 +51,7 @@ class ContactUsFormType extends AbstractType
                     'maxlength' => 15,
                 ]
             ])
-            ->add('message', TinymceType::class, [
+            ->add('message', TextareaType::class, [
                 'required' => false,
                 'label' => 'Message',
                 'label_attr' => [
@@ -61,10 +61,6 @@ class ContactUsFormType extends AbstractType
                     'class' => 'form-control',
                     'rows' => 5,
                     'maxlength' => 1000,
-                    'api-key' => "no-api-key",
-                    'data-controller' => 'tinymce',
-                    'data-action' => 'turbo:load->tinymce#createEditor',
-
                 ],
             ])
         ;

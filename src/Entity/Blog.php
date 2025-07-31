@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BlogRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -51,6 +53,23 @@ class Blog
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $author = null;
+
+    /**
+     * @var Collection<int, Faqs>
+     */
+    #[ORM\OneToMany(targetEntity: Faqs::class, mappedBy: 'blog', cascade: ['persist'], orphanRemoval: true)]
+    private Collection $faqs;
+
+    #[ORM\Column(length: 255)]
+    private ?string $blogAuthor = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $faqSchema = null;
+
+    public function __construct()
+    {
+        $this->faqs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -236,6 +255,60 @@ class Blog
     public function setAuthor(?string $author): static
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Faqs>
+     */
+    public function getFaqs(): Collection
+    {
+        return $this->faqs;
+    }
+
+    public function addFaq(Faqs $faq): static
+    {
+        if (!$this->faqs->contains($faq)) {
+            $this->faqs->add($faq);
+            $faq->setBlog($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFaq(Faqs $faq): static
+    {
+        if ($this->faqs->removeElement($faq)) {
+            // set the owning side to null (unless already changed)
+            if ($faq->getBlog() === $this) {
+                $faq->setBlog(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getBlogAuthor(): ?string
+    {
+        return $this->blogAuthor;
+    }
+
+    public function setBlogAuthor(string $blogAuthor): static
+    {
+        $this->blogAuthor = $blogAuthor;
+
+        return $this;
+    }
+
+    public function getFaqSchema(): ?string
+    {
+        return $this->faqSchema;
+    }
+
+    public function setFaqSchema(?string $faqSchema): static
+    {
+        $this->faqSchema = $faqSchema;
 
         return $this;
     }

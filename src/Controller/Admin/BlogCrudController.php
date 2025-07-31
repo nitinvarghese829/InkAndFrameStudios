@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Blog;
+use App\Form\FaqType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -15,6 +16,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use Doctrine\ORM\EntityManagerInterface;
 use Dom\Text;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -63,15 +66,27 @@ class BlogCrudController extends AbstractCrudController
                 })
                 ->onlyOnIndex()
                 ->renderAsHtml(),
-
+            TextField::new('blogAuthor'),
             BooleanField::new('isActive'),
-
             FormField::addPanel('Meta Information')->addCssClass('tab-general')->onlyOnForms(),
             TextField::new('metaTitle')->setLabel('Meta Title')->onlyOnForms(),
             TextareaField::new('metaDescription')->setLabel('Meta Description')->onlyOnForms(),
             TextField::new('metaKeywords')->setLabel('Meta Keywords')->onlyOnForms(),
-            TextField::new('author')->setLabel('Author')->onlyOnForms(),
+            TextField::new('author')->setLabel('Meta Author')->onlyOnForms(),
             TextField::new('tags')->setLabel('Tags')->onlyOnForms(),
+            CollectionField::new('faqs')
+                ->setEntryType(FaqType::class)
+                ->allowAdd()
+                ->allowDelete()
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                ])
+                ->onlyOnForms(),
+            TextareaField::new('faqSchema', 'FAQ Schema (JSON-LD)')
+                ->setFormTypeOption('attr', ['rows' => 10, 'class' => 'monospace'])
+                ->formatValue(function ($value, $entity) {
+                    return json_encode($value, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+                }),
         ];
 
         return $fileds;
@@ -79,6 +94,7 @@ class BlogCrudController extends AbstractCrudController
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
+
         $this->handleImageUpload($entityInstance);
         $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         $entityInstance->setCreatedBy($this->getUser());
@@ -87,6 +103,7 @@ class BlogCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
+
         $this->handleImageUpload($entityInstance);
         $entityInstance->setSlug($this->generateSlug($entityInstance->getTitle()));
         $entityInstance->setCreatedBy($this->getUser());

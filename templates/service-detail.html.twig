@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% set meta_title = 'Our Services – Comprehensive Visual Solutions' %}
-{% set meta_description = 'Explore the diverse services offered by Ink & Frame Studios, including photography, videography, editing, and more, tailored to bring your vision to life.' %}
-{% set meta_keywords = 'photography services, videography, editing, visual solutions, creative services' %}
+{% block title %}
+    {{ service.title }} – Comprehensive Visual Solutions
+{% endblock %}
+
+{% block meta_description %}
+    Explore the diverse services offered by Ink & Frame Studios, including photography, videography, editing, and more, tailored to bring your vision to life.
+{% endblock %}
+
+{% block meta_keywords %}
+    photography services, videography, editing, visual solutions, creative services
+{% endblock %}
+
+{% block meta_author %}
+    Ink and Frame Studios
+{% endblock %}
 
 {% block body %}
 	<section class="header-services">
