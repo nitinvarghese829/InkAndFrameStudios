@@ -29,6 +29,12 @@ class DashboardController extends AbstractDashboardController
         $sql = "SELECT count(*) FROM contact_us";
         $count['enquiries'] = $this->connection->fetchOne($sql);
 
+        $sql = "SELECT count(*) FROM blog";
+        $count['blogs'] = $this->connection->fetchOne($sql);
+
+        $sql = "SELECT count(*) FROM services";
+        $count['services'] = $this->connection->fetchOne($sql);
+
         return $this->render('admin/dashboard.html.twig', ['count' => $count]);
     }
 
