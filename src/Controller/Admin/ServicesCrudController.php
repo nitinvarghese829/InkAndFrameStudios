@@ -51,16 +51,16 @@ class ServicesCrudController extends AbstractCrudController
             FormField::addPanel('SEO Information')->setIcon('fa fa-search'),
             TextField::new('metaTitle')
                 ->setLabel('Meta Title')
-                ->setHelp('Used for the browser title and SEO.'),
+                ->setHelp('Used for the browser title and SEO.')->onlyOnForms(),
             TextareaField::new('metaDescription')
                 ->setLabel('Meta Description')
-                ->setHelp('Short description used by search engines.'),
+                ->setHelp('Short description used by search engines.')->onlyOnForms(),
             TextField::new('metaKeywords')
                 ->setLabel('Meta Keywords')
-                ->setHelp('Comma-separated keywords (optional).'),
+                ->setHelp('Comma-separated keywords (optional).')->onlyOnForms(),
             TextField::new('metaAuthor')
                 ->setLabel('Meta Author')
-                ->setHelp('Name of the author (used in meta tags).'),
+                ->setHelp('Name of the author (used in meta tags).')->onlyOnForms(),
             TextField::new('metaTags')
                 ->setLabel('Meta Tags'),
 
