@@ -1,19 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ service.title }} – Comprehensive Visual Solutions
+	{{ service.metaTitle }}
 {% endblock %}
-
 {% block meta_description %}
-    Explore the diverse services offered by Ink & Frame Studios, including photography, videography, editing, and more, tailored to bring your vision to life.
+	{{ service.metaDescription }}
 {% endblock %}
-
 {% block meta_keywords %}
-    photography services, videography, editing, visual solutions, creative services
+	{{ service.metaKeywords }}
 {% endblock %}
-
 {% block meta_author %}
-    Ink and Frame Studios
+	{{ service.metaAuthor }}
+{% endblock %}
+{% block meta_tags %}
+	<!-- Other meta tags -->
+	<meta property="og:title" content="{{ service.metaTitle }}"/>
+	<meta property="og:description" content="{{ service.metaDescription }}"/>
+	{# <meta property="og:image" content="{{ blog.getBlogImageDataUrl() }}"/> #}
+	<meta property="og:url" content="{{ app.request.uri }}"/>
+	<meta property="og:type" content="article"/>
+	<!-- Other meta tags -->
+
+	<!-- Other meta tags -->
+	<meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="{{ service.metaTitle }}"/>
+	<meta name="twitter:description" content="{{ service.metaDescription }}"/>
+	{# <meta name="twitter:image" content="{{ blog.getBlogImageDataUrl() }}"/> #}
+	<meta name="twitter:url" content="{{ app.request.uri }}"/>
+<!-- Other meta tags -->
 {% endblock %}
 
 {% block body %}

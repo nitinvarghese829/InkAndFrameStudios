@@ -6,6 +6,7 @@ use App\Entity\Services;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -46,6 +47,23 @@ class ServicesCrudController extends AbstractCrudController
                 ])
                 ->setLabel('Detailed Description')
                 ->setHelp('Enter a detailed description of the service, supports HTML formatting.')->onlyOnForms(),
+
+            FormField::addPanel('SEO Information')->setIcon('fa fa-search'),
+            TextField::new('metaTitle')
+                ->setLabel('Meta Title')
+                ->setHelp('Used for the browser title and SEO.'),
+            TextareaField::new('metaDescription')
+                ->setLabel('Meta Description')
+                ->setHelp('Short description used by search engines.'),
+            TextField::new('metaKeywords')
+                ->setLabel('Meta Keywords')
+                ->setHelp('Comma-separated keywords (optional).'),
+            TextField::new('metaAuthor')
+                ->setLabel('Meta Author')
+                ->setHelp('Name of the author (used in meta tags).'),
+            TextField::new('metaTags')
+                ->setLabel('Meta Tags'),
+
         ];
     }
 
