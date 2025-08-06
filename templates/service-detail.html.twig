@@ -55,7 +55,7 @@
 						<div class="text-white">{{ service.detailedDescription|raw }}</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12">
+				<div class="col-lg-3 col-md-6 col-sm-12 position-sticky top-0" style="height: 100vh; overflow-y: auto;">
                     <h3 class="text-primary">Other Services</h3>
                     {% for item in otherServices %}
                         <a href="{{ path('app_our_services_detail', {'slug': item.slug}) }}" class="text-decoration-none">
