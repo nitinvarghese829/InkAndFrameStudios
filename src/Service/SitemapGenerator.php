@@ -64,7 +64,8 @@ class SitemapGenerator
         }
 
         // Save to public folder
-        $xml->asXML(__DIR__ . '/../../public/sitemap.xml');
+        // $xml->asXML(__DIR__ . '/../../public/sitemap.xml');
+        $xml->asXML($_ENV['SITEMAP_URL']);
     }
 
     public function getAllRoutes(): array
