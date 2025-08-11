@@ -36,18 +36,7 @@
 		</div>
 	</section>
 
-    <section class="bg-black py-5">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="text-primary" data-aoss="fade-in">Why Choose Our {{ service.title }}</h1>
-                <p class="text-white m-0 font-16" data-aoss="fade-in">
-                    Trusted by countless clients, our {{ service.title|lower }} stands out for quality, creativity, and results that speak.
-                </p>
-            </div>
-        </div>
-    </section>
-
-	<section class="bg-black">
+	<section class="bg-black py-5">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-9 col-md-6 col-sm-12">
@@ -55,7 +44,7 @@
 						<div class="text-white">{{ service.detailedDescription|raw }}</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-12 position-sticky top-0" style="height: 100vh; overflow-y: auto;">
+				<div class="col-lg-3 col-md-6 col-sm-12 position-sticky top-0 py-5" style="height: 100vh; overflow-y: auto;">
                     <h3 class="text-primary">Other Services</h3>
                     {% for item in otherServices %}
                         <a href="{{ path('app_our_services_detail', {'slug': item.slug}) }}" class="text-decoration-none">

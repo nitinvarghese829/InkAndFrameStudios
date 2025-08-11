@@ -47,6 +47,18 @@ class Services
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $metaAuthor = null;
 
+    #[ORM\Column]
+    private ?\DateTime $createdAt;
+
+    #[ORM\ManyToOne(inversedBy: 'services')]
+    private ?Admin $createdBy = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $updatedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'services')]
+    private ?Admin $updatedBy = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -180,6 +192,54 @@ class Services
     public function setMetaAuthor(?string $metaAuthor): static
     {
         $this->metaAuthor = $metaAuthor;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?Admin
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?Admin $createdBy): static
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTime $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getUpdatedBy(): ?Admin
+    {
+        return $this->updatedBy;
+    }
+
+    public function setUpdatedBy(?Admin $updatedBy): static
+    {
+        $this->updatedBy = $updatedBy;
 
         return $this;
     }

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Services;
+use App\Service\SitemapGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
@@ -16,6 +17,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ServicesCrudController extends AbstractCrudController
 {
+    private $sitemapGenerator;
+
+    public function __construct(SitemapGenerator $sitemapGenerator)
+    {
+        $this->sitemapGenerator = $sitemapGenerator;
+    }
+
     public static function getEntityFqcn(): string
     {
         return Services::class;
@@ -69,11 +77,13 @@ class ServicesCrudController extends AbstractCrudController
 
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
+        $this->sitemapGenerator->generate();
         parent::updateEntity($entityManager, $entityInstance);
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
+        $this->sitemapGenerator->generate();
         parent::persistEntity($entityManager, $entityInstance);
     }
 }
