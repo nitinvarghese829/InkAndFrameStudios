@@ -78,12 +78,24 @@ class ServicesCrudController extends AbstractCrudController
     public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->sitemapGenerator->generate();
+        if ($entityInstance->getCreatedBy() === null) {
+            $entityInstance->setCreatedBy($this->getUser());
+            $entityInstance->setCreatedAt(date_create('now'));
+        }
+        $entityInstance->setUpdatedBy($this->getUser());
+        $entityInstance->setUpdatedAt(date_create('now'));
         parent::updateEntity($entityManager, $entityInstance);
     }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         $this->sitemapGenerator->generate();
+        if ($entityInstance->getCreatedBy() === null) {
+            $entityInstance->setCreatedBy($this->getUser());
+            $entityInstance->setCreatedAt(date_create('now'));
+        }
+        $entityInstance->setUpdatedBy($this->getUser());
+        $entityInstance->setUpdatedAt(date_create('now'));
         parent::persistEntity($entityManager, $entityInstance);
     }
 }
