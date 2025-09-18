@@ -16,10 +16,153 @@
     Ink and Frame Studios
 {% endblock %}
 
+{% block meta_tags %}
+	<!-- Open Graph Tags -->
+	<meta property="og:title" content="{{ block('title') }}">
+	<meta property="og:description" content="{{ block('meta_description') }}">
+	<meta property="og:image" content="{{ app.request.uri }}assets/images/hero-1-nEusGmv.webp">
+	<meta property="og:url" content="{{ app.request.uri }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Ink & Frame Studios">
+
+	<!-- Twitter Cards -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ block('title') }}">
+	<meta name="twitter:description" content="{{ block('meta_description') }}">
+	<meta name="twitter:image" content="{{ app.request.uri }}assets/images/hero-1-nEusGmv.webp">
+	<meta name="twitter:site" content="@InkFrameStudios">
+	<meta name="twitter:creator" content="@InkFrameStudios">
+{% endblock %}
+
+{% block schema %}
+	{{ parent() }}
+	<!-- Enhanced Schema.org Structured Data -->
+	<script type="application/ld+json">
+	[
+		{
+			"@context": "https://schema.org",
+			"@type": "WebSite",
+			"name": "Ink & Frame Studios",
+			"url": "{{app.request.uri}}",
+			"description": "Visual storytelling and film production studio based in Maharashtra, India",
+			"publisher": {
+				"@type": "Organization",
+				"name": "Ink & Frame Studios"
+			}
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Ink & Frame Studios",
+			"description": "Visual storytelling and film production studio based in Maharashtra, India",
+			"url": "{{app.request.uri}}",
+			"logo": "{{absolute_url(asset('images/logo.webp'))}}",
+			"image": "{{absolute_url(asset('images/hero-1.webp'))}}",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Mumbai",
+				"addressRegion": "Maharashtra",
+				"addressCountry": "India"
+			},
+			"contactPoint": {
+				"@type": "ContactPoint",
+				"telephone": "+91-99677-22710",
+				"contactType": "customer support",
+				"email": "hello@inkandframestudios.com"
+			},
+			"sameAs": [
+				"https://www.youtube.com/@inkandframestudios",
+				"https://www.instagram.com/inkandframestudios"
+			],
+			"makesOffer": [
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Script Writing",
+						"description": "Original stories, commissioned scripts, screenplays"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Film & Ad Production",
+						"description": "Brand films, campaigns, concept-to-screen execution"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Service",
+						"name": "Creative Development",
+						"description": "Pitch creation, story ideation, collaborations"
+					}
+				}
+			]
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{
+					"@type": "ListItem",
+					"position": 1,
+					"name": "Home",
+					"item": "{{app.request.uri}}"
+				}
+			]
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "VideoObject",
+			"name": "JANEMAN Official Trailer - Featured Project",
+			"description": "Featured project showcasing our passion for storytelling and cinematic craftsmanship",
+			"thumbnailUrl": "https://img.youtube.com/vi/101FvfK3J0Q/maxresdefault.jpg",
+			"uploadDate": "2024-01-01",
+			"contentUrl": "https://www.youtube.com/watch?v=101FvfK3J0Q",
+			"embedUrl": "https://www.youtube.com/embed/101FvfK3J0Q",
+			"publisher": {
+				"@type": "Organization",
+				"name": "Ink & Frame Studios"
+			}
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "VideoObject",
+			"name": "Ramachandra Boss & Co Official Trailer - Featured Project",
+			"description": "Featured project showcasing our passion for storytelling and cinematic craftsmanship",
+			"thumbnailUrl": "https://img.youtube.com/vi/JvP2jaCmpgE/maxresdefault.jpg",
+			"uploadDate": "2024-01-01",
+			"contentUrl": "https://www.youtube.com/watch?v=JvP2jaCmpgE",
+			"embedUrl": "https://www.youtube.com/embed/JvP2jaCmpgE",
+			"publisher": {
+				"@type": "Organization",
+				"name": "Ink & Frame Studios"
+			}
+		},
+		{
+			"@context": "https://schema.org",
+			"@type": "VideoObject",
+			"name": "Ratricha Paus Official Trailer - Featured Project",
+			"description": "Featured project showcasing our passion for storytelling and cinematic craftsmanship",
+			"thumbnailUrl": "https://img.youtube.com/vi/LhAQEjbZBdw/maxresdefault.jpg",
+			"uploadDate": "2024-01-01",
+			"contentUrl": "https://www.youtube.com/watch?v=LhAQEjbZBdw",
+			"embedUrl": "https://www.youtube.com/embed/LhAQEjbZBdw",
+			"publisher": {
+				"@type": "Organization",
+				"name": "Ink & Frame Studios"
+			}
+		}
+	]
+	</script>
+{% endblock %}
+
 {% block body %}
 	<section class="hero-section">
 		<header class="container py-5">
-			<h1 class="font-24 text-white" data-aos="fade-in">{{'Welcome to Ink & Frame Studios — where stories come alive, from bold scripts to unforgettable visuals.' | upper}}</h1>
+			<h1 class="font-24 text-white" data-aos="fade-in">WELCOME TO INK & FRAME STUDIOS — WHERE STORIES COME ALIVE, FROM BOLD SCRIPTS TO UNFORGETTABLE VISUALS.</h1>
 
 
 			<div class="row g-3 py-3">
@@ -45,7 +188,7 @@
 	<section class="our-story-section">
 		<div class=" py-5">
 			<div class="container">
-				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'The Ink & Frame Experience' | upper }}</h1>
+				<h2 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'The Ink & Frame Experience' | upper }}</h2>
 
 
 				<p class="text-white text-center m-0 py-3 font-16" data-aos="fade-in">We blend storytelling, cinematic artistry, and passion to create compelling visuals that leave a lasting impact. Every frame, every word, and every detail is crafted with creativity and precision.</p>
@@ -60,11 +203,11 @@
 						<div class="row g-2 h-100" data-aos="fade-in">
 
 							<div class="col-6">
-								<img src="{{asset('images/our-story.webp')}}" alt="" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
+								<img src="{{asset('images/our-story.webp')}}" alt="our-story" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
 
 							</div>
 							<div class="col-6">
-								<img src="{{asset('images/cinema-claps.webp')}}" alt="" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
+								<img src="{{asset('images/cinema-claps.webp')}}" alt="cinema-claps" class="img-fluid object-fit-cover rounded-2 w-100 h-100"/>
 
 							</div>
 
@@ -76,7 +219,7 @@
 							<div class="d-flex position-relative" data-aos="fade-in">
 
 								<p class="font-24 fw-bold text-muted m-0">01</p>
-								<p class="text-white m-0 position-absolute title">{{'Storytelling' | upper }}</p>
+								<h3 class="text-white m-0 position-absolute title font-18">{{'Storytelling' | upper }}</h3>
 
 							</div>
 							<p class="text-white font-12" data-aos="fade-in">We weave powerful narratives that leave a lasting impact, turning ideas into unforgettable experiences</p>
@@ -87,7 +230,7 @@
 						<div>
 							<div class="d-flex position-relative" data-aos="fade-in">
 								<p class="font-24 fw-bold text-muted m-0">02</p>
-								<p class="text-white m-0 position-absolute title">{{'Cinematic Craftsmanship' | upper }}</p>
+								<h3 class="text-white m-0 position-absolute title font-18">{{'Cinematic Craftsmanship' | upper }}</h3>
 
 							</div>
 							<p class="text-white font-12" data-aos="fade-in">With a keen eye for detail, we create visually stunning frames that enhance every story, blending art with precision.</p>
@@ -98,7 +241,7 @@
 						<div>
 							<div class="d-flex position-relative" data-aos="fade-in">
 								<p class="font-24 fw-bold text-muted m-0">03</p>
-								<p class="text-white m-0 position-absolute title">{{'Passion' | upper }}</p>
+								<h3 class="text-white m-0 position-absolute title font-18">{{'Passion' | upper }}</h3>
 
 							</div>
 							<p class="text-white font-12" data-aos="fade-in">Our love for storytelling and filmmaking drives us to push creative boundaries, delivering work that resonates with emotion and authenticity.</p>
@@ -118,7 +261,7 @@
 	<section class="our-services-section">
 		<div class="bg-secondary py-5">
 			<div class="container">
-				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Services' | upper }}</h1>
+				<h2 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Services' | upper }}</h2>
 
 
 				{# <div class="row g-3"> #}
@@ -137,7 +280,7 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-feather text-primary" viewbox="0 0 16 16">
 									<path d="M15.807.531c-.174-.177-.41-.289-.64-.363a3.8 3.8 0 0 0-.833-.15c-.62-.049-1.394 0-2.252.175C10.365.545 8.264 1.415 6.315 3.1S3.147 6.824 2.557 8.523c-.294.847-.44 1.634-.429 2.268.005.316.05.62.154.88q.025.061.056.122A68 68 0 0 0 .08 15.198a.53.53 0 0 0 .157.72.504.504 0 0 0 .705-.16 68 68 0 0 1 2.158-3.26c.285.141.616.195.958.182.513-.02 1.098-.188 1.723-.49 1.25-.605 2.744-1.787 4.303-3.642l1.518-1.55a.53.53 0 0 0 0-.739l-.729-.744 1.311.209a.5.5 0 0 0 .443-.15l.663-.684c.663-.68 1.292-1.325 1.763-1.892.314-.378.585-.752.754-1.107.163-.345.278-.773.112-1.188a.5.5 0 0 0-.112-.172M3.733 11.62C5.385 9.374 7.24 7.215 9.309 5.394l1.21 1.234-1.171 1.196-.027.03c-1.5 1.789-2.891 2.867-3.977 3.393-.544.263-.99.378-1.324.39a1.3 1.3 0 0 1-.287-.018Zm6.769-7.22c1.31-1.028 2.7-1.914 4.172-2.6a7 7 0 0 1-.4.523c-.442.533-1.028 1.134-1.681 1.804l-.51.524zm3.346-3.357C9.594 3.147 6.045 6.8 3.149 10.678c.007-.464.121-1.086.37-1.806.533-1.535 1.65-3.415 3.455-4.976 1.807-1.561 3.746-2.36 5.31-2.68a8 8 0 0 1 1.564-.173"/>
 								</svg>
-								<p class="fw-bold text-primary mt-2">{{ 'Script Writing' | upper }}</p>
+								<h3 class="fw-bold text-primary mt-2 font-18">{{ 'Script Writing' | upper }}</h3>
 
 								<p class="text-white small">Original stories, commissioned scripts, screenplays</p>
 
@@ -152,7 +295,7 @@
 									<path d="M9 6a3 3 0 1 0 0-6 3 3 0 0 0 0 6M7 3a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
 								</svg>
 
-								<p class="fw-bold text-primary mt-2">{{ 'Film & Ad Production' | upper }}</p>
+								<h3 class="fw-bold text-primary mt-2 font-18">{{ 'Film & Ad Production' | upper }}</h3>
 								<p class="text-white small">Brand films, campaigns, concept-to-screen execution</p>
 
 							</div>
@@ -183,7 +326,7 @@
 	<section class="featured-projects-section">
 		<div class="bg-black py-5">
 			<div class="container">
-				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Featured Projects' | upper }}</h1>
+				<h2 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Featured Projects' | upper }}</h2>
 				<p class="text-white text-center font-16 m-0" data-aos="fade-in">Discover standout projects of our co-founders that showcase our passion for storytelling, cinematic craftsmanship, and creative excellence. Each project is a testament to our dedication to bringing ideas to life with stunning visuals and compelling narratives.</p>
 			</div>
 
@@ -194,7 +337,7 @@
 					<div class="col-lg-8 col-md-8 col-sm-12">
 						<div data-video-id="101FvfK3J0Q" class="youtube-thumbnail position-relative rounded-4 shadow h-100">
 							<div class="ratio ratio-16x9">
-								<img src="https://img.youtube.com/vi/101FvfK3J0Q/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
+								<img src="https://img.youtube.com/vi/101FvfK3J0Q/maxresdefault.jpg" alt="JANEMAN official trailer" class="img-fluid h-100 object-fit-cover rounded-3">
 							</div>
 
 							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
@@ -205,7 +348,7 @@
 					<div class="col-lg-4 col-md-4 col-sm-12 d-flex flex-column gap-3">
 						<div data-video-id="JvP2jaCmpgE" class="youtube-thumbnail position-relative rounded-4 shadow">
 							<div class="ratio ratio-16x9">
-								<img src="https://img.youtube.com/vi/JvP2jaCmpgE/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
+								<img src="https://img.youtube.com/vi/JvP2jaCmpgE/maxresdefault.jpg" alt="Ramachandra Boss & Co Official Trailer" class="img-fluid h-100 object-fit-cover rounded-3">
 							</div>
 
 							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
@@ -215,7 +358,7 @@
 
 						<div data-video-id="LhAQEjbZBdw" class="youtube-thumbnail position-relative rounded-4 shadow">
 							<div class="ratio ratio-16x9">
-								<img src="https://img.youtube.com/vi/LhAQEjbZBdw/maxresdefault.jpg" alt="" class="img-fluid h-100 object-fit-cover rounded-3">
+								<img src="https://img.youtube.com/vi/LhAQEjbZBdw/maxresdefault.jpg" alt="Ratricha paus ( रात्रीचा पाऊस ) | Official Trailer" class="img-fluid h-100 object-fit-cover rounded-3">
 							</div>
 
 							<button class="position-absolute top-50 start-50 translate-middle border-0 bg-transparent">
@@ -231,7 +374,7 @@
 	<section class="upcoming-projects">
 		<div class="bg-secondary py-5">
 			<div class="container">
-				<h1 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Upcoming Projects' | upper }}</h1>
+				<h2 class="text-primary text-center m-0 fw-bold" data-aos="fade-in">{{ 'Upcoming Projects' | upper }}</h2>
 				<p class="text-white text-center font-16 m-0" data-aos="fade-in">Get a glimpse into what’s next from our co-founder
 					<span class="text-primary">Vishnu Thandassery</span>, in his independent journey as a Director of Photography.<br/>
 					While not an Ink & Frame Studios production, this upcoming project showcases the bold creative vision of
@@ -244,10 +387,10 @@
 				<div class="project py-3">
 					<div class="row g-3 py-3">
 						<div class="col-lg-4 col-md-12">
-							<img src="{{asset('images/upcoming.jpeg')}}" alt="" class="img-fluid rounded-3 shadow "/>
+							<img src="{{asset('images/upcoming.jpeg')}}" alt="Udumbanchola Vision" class="img-fluid rounded-3 shadow "/>
 						</div>
 						<div class="col-lg-8 col-md-12 justify-content-center d-flex flex-column">
-							<p class="text-primary m-0 fw-bold font-24" data-aos="fade-in">{{ 'Udumbanchola Vision' | upper }}</p>
+							<h3 class="text-primary m-0 fw-bold font-24" data-aos="fade-in">{{ 'Udumbanchola Vision' | upper }}</h3>
 
 							<div class="row mb-2">
 								<div class="col-3 col-md-2">

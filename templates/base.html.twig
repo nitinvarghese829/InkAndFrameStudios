@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,8 @@
 		<link rel="canonical" href="{{ app.request.uri }}">
 		
 		
-		<meta name="robots" content="index, follow">
+		<meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large">
+		<meta name="googlebot" content="index, follow">
 
 
 		<link rel="icon" href="{{ asset('images/logo.png') }}">
@@ -33,6 +34,8 @@
 			<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 		{% endblock %}
+
+		{% block schema %}{% endblock %}
 	</head>
 	<body>
 		{% include 'header.html.twig' %}
