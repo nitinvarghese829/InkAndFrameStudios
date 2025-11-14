@@ -69,5 +69,9 @@ Encore
 
 // uncomment if you're having problems with a jQuery plugin
 //.autoProvidejQuery()
+// Disable parallel processing for the TerserPlugin
+Encore.configureTerserPlugin((options) => {
+  options.parallel = false; // Set to false to disable parallelism
+});
 
 module.exports = Encore.getWebpackConfig();
